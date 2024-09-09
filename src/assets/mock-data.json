@@ -1,0 +1,11 @@
+[
+    {
+      "contact": "user1@example.com",
+      "type": "email"
+    },
+    {
+      "contact": "+1234567890",
+      "type": "phone"
+    }
+  
+]

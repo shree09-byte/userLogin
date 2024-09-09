@@ -1,0 +1,55 @@
+<div class="main-container">
+  <section class="section-content">
+    <div class="flex-section-left">
+      <img
+        src="../../assets/logo/solvei8-On white bg.png"
+        alt="logo"
+        class="logo-img"
+      />
+      <div class="section-img">
+        <img
+          src="../../assets/commons/Business, Support, design, communication _ customer service, laptop, computer, messages, woman.png"
+          alt="dummy"
+          class="second-img"
+        />
+      </div>
+    </div>
+    <div class="flex-section-right">
+      <div class="content-right">
+        <h1 class="heading">Welcome</h1>
+        <div class="form-container">
+          <form
+            [formGroup]="validationForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <label class="label-field" for="email">Enter Email ID</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control input-field"
+              placeholder="Enter Email ID"
+              required
+            />
+            <h2
+              class="or-label"
+            >
+              (OR)
+            </h2>
+            <label class="label-field" for="mobile">Enter Mobile No.</label>
+            <input
+              type="text"
+              id="mobile"
+              formControlName="mobile"
+              class="form-control input-field"
+              placeholder="91+"
+              required
+            />
+
+            <button class="button" [disabled]="!validationForm.valid && !(validationForm.value.email || validationForm.value.mobile)" type="submit">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

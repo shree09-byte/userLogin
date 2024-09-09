@@ -1,0 +1,159 @@
+<div class="main-container">
+    <section class="section-content">
+      <div class="flex-section-left">
+        <img
+          src="../../assets/logo/solvei8-On white bg.png"
+          alt="logo"
+          class="logo-img"
+        />
+        <div class="section-img">
+          <img
+            src="../../assets/commons/Business, Support, design, communication _ customer service, laptop, computer, messages, woman.png"
+            alt="dummy"
+            class="second-img"
+          />
+        </div>
+      </div>
+      <div class="flex-section-right">
+        <div class="content-right">
+          <button
+            *ngIf="showDiv === 2"
+            type="button"
+            class="back-button"
+            (click)="onBack()"
+          >
+            <img src="../../assets/commons/Group 3834.png" alt="back" />
+          </button>
+  
+          <!-- Step 1 -->
+          <h1 *ngIf="showDiv === 1" class="heading">Create Account</h1>
+          <div *ngIf="showDiv === 1" class="form-container">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+              <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+              <label class="label-field" for="email">Enter Email ID</label>
+              <input
+                type="text"
+                id="email"
+                formControlName="email"
+                class="form-control input-field"
+                placeholder="Enter Email ID"
+              />
+              <label class="label-field" for="fullName">Enter Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                formControlName="fullName"
+                class="form-control input-field"
+                placeholder="Full name"
+              />
+              <label class="label-field" for="password">Create Password</label>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control input-field"
+                placeholder="Password"
+              />
+              <button class="button" type="submit">Next</button>
+            </form>
+          </div>
+  
+          <!-- Step 2 -->
+          <h1 *ngIf="showDiv === 2" class="heading">Create Account</h1>
+          <div *ngIf="showDiv === 2" class="form-container">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmitStep2()">
+              <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+  
+              <label class="label-field" for="org-name">Organisation Name</label>
+              <input
+                type="text"
+                id="org-name"
+                formControlName="orgName"
+                class="form-control input-field"
+                placeholder="Enter Organisation Name"
+              />
+              <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+              </div>
+              <label class="label-field" for="orgId">Organisation ID</label>
+              <input
+                type="text"
+                id="orgId"
+                formControlName="orgId"
+                class="form-control input-field"
+                placeholder="Organisation ID"
+              />
+              <label class="label-field" for="designation">Designation</label>
+              <select
+                class="form-control input-field"
+                formControlName="designation"
+                id="designation"
+              >
+                <option value="one">Option 1</option>
+                <option value="two">Option 2</option>
+                <option value="three">Option 3</option>
+              </select>
+              <label class="label-field" for="birthDate">Birth Date</label>
+              <input
+                type="date"
+                id="birthDate"
+                placeholder="Enter Birth Date"
+                formControlName="birthDate"
+                class="form-control input-field"
+                [max]="maxBirthDate"
+              />
+  
+              <div style="display: flex; gap: 10px; justify-content: space-between;">
+                <div style="display: flex; flex-direction: column;">
+                  <label class="label-field" for="city">City</label>
+                  <input
+                    style="width: 150px"
+                    type="text"
+                    id="city"
+                    formControlName="city"
+                    class="form-control input-field"
+                    placeholder="Enter City"
+                  />
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                  <label class="label-field" for="pincode">Pincode</label>
+                  <input
+                    style="width: 150px"
+                    type="number"
+                    id="pincode"
+                    formControlName="pincode"
+                    class="form-control input-field"
+                    placeholder="Enter Pincode"
+                  />
+                  <div
+                    *ngIf="signUpForm.controls['pincode'].invalid && signUpForm.controls['pincode'].touched"
+                    class="error-message"
+                  >
+                    Pincode must be a 6-digit number.
+                  </div>
+                </div>
+              </div>
+  
+              <button class="button" type="submit">Next</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <!-- This div will be shown after form submission -->
+      <div *ngIf="showDiv === 3" class="flex-section-right">
+        <div class="content-right">
+          <img
+            class="success-img"
+            src="../../assets/commons/Group 3835.png"
+            alt="success"
+          />
+          <h1 class="success-heading">Welcome to Solvei8!</h1>
+        </div>
+        <p class="success-text">
+          Redirecting you to the Login screen. This might take a few seconds...
+        </p>
+      </div>
+    </section>
+  </div>
+  

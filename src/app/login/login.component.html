@@ -1,0 +1,71 @@
+<div class="main-container">
+  <section class="section-content">
+    <div class="flex-section-left">
+      <img
+        src="../../assets/logo/solvei8-On white bg.png"
+        alt="logo"
+        class="logo-img"
+      />
+      <div class="section-img">
+        <img
+          src="../../assets/commons/Business, Support, design, communication _ customer service, laptop, computer, messages, woman.png"
+          alt="dummy"
+          class="second-img"
+        />
+      </div>
+    </div>
+    <!-- This div will be shown initially -->
+    <div *ngIf="showFirstDiv" class="flex-section-right">
+      <div class="content-right">
+        <h1 class="heading">Welcome Back!</h1>
+        <div class="form-container">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label class="label-field" for="email">Enter Email ID</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control input-field"
+              placeholder="Enter Email ID"
+            />
+            <h2 class="or-label">(OR)</h2>
+            <label class="label-field" for="password">Enter Password</label>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              class="form-control input-field"
+              placeholder="Password"
+              required
+            />
+            <!-- Error message for invalid password -->
+            <div *ngIf="showError" class="error">
+              <small style="color: red"
+                >Password is incorrect. Please try again.</small
+              >
+            </div>
+            <button class="button" [disabled]="!loginForm.valid" type="submit">
+              Next
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- This div will be shown after form submission -->
+    <div *ngIf="!showFirstDiv" class="flex-section-right">
+      <div class="content-right">
+        <!-- Add content for the second div here -->
+        <img
+          class="success-img"
+          src="../../assets/commons/Group 3835.png"
+          alt="success"
+        />
+        <h1 class="success-heading">Logging you in....</h1>
+      </div>
+      <p class="success-text">
+        Kindly wait as we are curating the data accordingly.
+      </p>
+    </div>
+  </section>
+</div>
